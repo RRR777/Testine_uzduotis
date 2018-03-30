@@ -25,5 +25,10 @@ class Auto extends Model
         return $this->belongsTo(User::updator_id);
     }
 
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
+    }
+
 }
 

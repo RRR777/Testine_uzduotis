@@ -24,5 +24,9 @@ Route::get('/autos/create', 'AutoController@create');
 Route::post('/autos', 'AutoController@store');
 Route::get('/autos/{auto}', 'AutoController@show');
 
-Route::get('/trips/create', 'TripController@create');
-Route::post('/trips', 'TripController@store');
+
+Route::get('/trips', 'TripController@index');
+Route::get('/trips/{auto}/create', 'TripController@create');
+Route::post('/trips/{auto}', 'TripController@store');
+
+Route::get('/users', 'UserController@index');

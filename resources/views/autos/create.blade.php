@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h1>Įveskite Naują transporto priemonę</h1></div>
-
+                <div class="card-header"><span class="display-4">Įveskite Naują transporto priemonę</span><button onclick='location.href="{{url('/home')}}"' type="button" class="btn btn-info float-right">Pradinis</button></div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
