@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Auto;
+use Carbon\Carbon;
+use DateTime;
 use App\User;
+use App\Auto;
+use App\Trip;
 
-
-class AutoController extends Controller
+class ReportsController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +19,7 @@ class AutoController extends Controller
      */
     public function index()
     {
-        $autos = Auto::all();
-        return view('autos.index', compact('autos'));
+
     }
 
     /**
@@ -31,9 +27,11 @@ class AutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        return view('autos.create');
+        $users = User::orderBy('name', 'asc')->get();
+        $autos = Auto::orderBy('name', 'asc')->orderBy('number', 'asc')->get();
+        return view('reports.create', compact('users', 'autos'));
     }
 
     /**
@@ -44,27 +42,7 @@ class AutoController extends Controller
      */
     public function store(Request $request)
     {
-        //validation
-        $this->validate(request(),[
-            'name' => 'required',
-            'number' => 'required|unique:autos,number',
-            'stop' => 'required',
-            'drive' => 'required',
-            'unload' => 'required'
-        ]);
 
-        //create a new Auto using the request data
-        Auto::create([
-            'name' => request('name'),
-            'number' => request('number'),
-            'stop' => request('stop'),
-            'drive' => request('drive'),
-            'unload' => request('unload'),
-            'creator_id' => Auth::user()->id
-        ]);
-
-        //and then redirect to the home page
-        return redirect('/home');
     }
 
     /**
@@ -73,9 +51,9 @@ class AutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Auto $auto)
+    public function show($id)
     {
-        return view('trips.create', compact('auto'));
+        //
     }
 
     /**
@@ -110,5 +88,20 @@ class AutoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function report(Request $request)
+    {
+        $year = Carbon::parse(request('month'))->format('Y-m');
+        $month = Carbon::parse(request('month'))->format('m');
+
+        $users = User::where('name', request('user'))->get();
+        foreach ($users as $user){
+             $id = $user->id; 
+        }
+
+        $trips = Trip::where('user_id', $id)->whereYear('date', $year)->whereMonth('date', $month)->get();
+
+        return view('reports.report', compact(['trips']));
     }
 }

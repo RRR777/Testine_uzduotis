@@ -33,8 +33,6 @@ class TripController extends Controller
      */
     public function create(Auto $auto)
     {
-        //return "This is TripControllers create funkcija";
-        //$auto = Auto::find($id);
         return view('trips.create', compact('auto'));
     }
 
@@ -71,24 +69,21 @@ class TripController extends Controller
         $trip->spidometerEnd = request('spidometerEnd');
         $trip->timeunload = request('timeunload');
         $trip->distance = request('spidometerEnd') - request('spidometerStart');
+        //fuel calculation     
+        function time_Diff_Minutes($startTime, $endTime) 
+        {
+        $to_time = strtotime($endTime);
+        $from_time = strtotime($startTime);
+        $minutes = ($to_time - $from_time) / 60;
 
-        function time_Diff_Minutes($startTime, $endTime) {
-            $to_time = strtotime($endTime);
-            $from_time = strtotime($startTime);
-            $minutes = ($to_time - $from_time) / 60; 
-
-            return ($minutes < 0 ? 0 : abs($minutes));   
-        }                                     
-        
+        return ($minutes < 0 ? 0 : abs($minutes));
+        }        
         $stop = time_Diff_Minutes($trip->timeToCustomer, $trip->timeFromCustomer) - $trip->timeunload;
         $drive = time_Diff_Minutes($trip->timeStart, $trip->timeToCustomer) + time_Diff_Minutes($trip->timeFromCustomer, $trip->timeEnd);                                    
         $fuel = round(($stop / 60 * $trip->auto->stop) + ($drive / 60 * $trip->auto->drive) + ($trip->timeunload / 60 * $trip->auto->unload), 2);
 
         $trip->fuel = $fuel;
         $trip->save();
-
-
-
 
         //and then redirect to the home page
         return redirect('/home');
@@ -138,4 +133,10 @@ class TripController extends Controller
     {
         //
     }
+
+    public function fuelcalculation()
+    {
+        //
+    }
+
 }

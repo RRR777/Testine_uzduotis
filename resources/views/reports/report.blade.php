@@ -17,13 +17,10 @@
                     @endif
                     <div class="container">
                         @include('layouts.errors')
-                        <table class="table table-sm table-hover">
+                        <table class="table table-sm table-hover table-responsive">
                           <thead>
                             <tr>
-                              <th scope="col">Eil.Nr.</th>
-                              <th scope="col">Auto_id</th>
-                              <th scope="col">Automobilis</th>
-                              <th scope="col">Valst.Nr.</th>
+                              <th scope="col">Nr.</th>
                               <th scope="col">Data:</th>
                               <th scope="col">Maršrutas</th>
                               <th scope="col">Išvyko iš terminalo</th>
@@ -42,9 +39,6 @@
                               @foreach ($trips as $trip)
                                 <tr>
                                   <th scope="row">{{ $counter++ }}</th>
-                                  <td>{{ $trip->auto_id }}</td>
-                                  <td>{{ $trip->auto->name }}</td>
-                                  <td>{{ $trip->auto->number }}</td>
                                   <td>{{ $trip->date }}</td>
                                   <td>{{ $trip->route }}</td>
                                   <td>{{ $trip->timeStart }}</td>

@@ -30,3 +30,7 @@ Route::get('/trips/{auto}/create', 'TripController@create');
 Route::post('/trips/{auto}', 'TripController@store');
 
 Route::get('/users', 'UserController@index');
+
+Route::get('/reports', 'ReportsController@index');
+Route::get('/reports/create', 'ReportsController@create');
+Route::post('/reports', 'ReportsController@report');

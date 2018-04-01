@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
-    protected $table = 'trips';
+    protected $time = 'H:i';
     protected $fillable = [
         'date',
         'route', 
@@ -27,5 +27,10 @@ class Trip extends Model
     public function auto()
     {
         return $this->belongsTo(Auto::class);
+    }
+
+    public function report()
+    {
+        return $this->belongsTo(Report::class);
     }
 }
