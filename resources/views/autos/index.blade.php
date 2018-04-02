@@ -23,6 +23,9 @@
                               <th scope="col">Eil.Nr.</th>
                               <th scope="col">Transporto priemonė</th>
                               <th scope="col">Valstybinis Numeris</th>
+                              <th scope="col">Stovėjimas, l/h</th>
+                              <th scope="col">Važiavimas, l/h</th>
+                              <th scope="col">Iškrovimas, l/h</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -32,6 +35,9 @@
                                   <th scope="row">{{ $counter++ }}</th>
                                   <td><a href = "/trips/{{$auto->id}}/create">{{$auto->name}}</a> </td>
                                   <td><a href = "/trips/{{$auto->id}}/create">{{$auto->number}}</a> </td>
+                                  <td><a href = "/trips/{{$auto->id}}/create">{{$auto->stop}}</a> </td>
+                                  <td><a href = "/trips/{{$auto->id}}/create">{{$auto->drive}}</a> </td>
+                                  <td><a href = "/trips/{{$auto->id}}/create">{{$auto->unload}}</a> </td>
                                 </tr>
                               @endforeach
                           </tbody>

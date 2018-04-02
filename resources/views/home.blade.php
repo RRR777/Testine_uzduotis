@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    {{ Auth::user()->name }}, You are logged in! 
+                    {{ Auth::user()->name }}, Jūs sėkmingai prisijungėte! 
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -25,13 +25,13 @@
                                 <button type="submit" onclick="location.href='{{url('autos')}}'" class="btn btn-info">Įvesti kelionę</button>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" onclick="location.href='{{url('trips')}}'"class="btn btn-info">Kelionės</button>
+                                <button type="submit" onclick="location.href='{{url('trips')}}'"class="btn btn-info">Visos Kelionės</button>
                             </div>
                             <div class="col-md-2">
                                 <button type="submit" onclick="location.href='{{url('users')}}'" class="btn btn-info">Vartotojai</button>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" onclick="location.href='{{url('reports/create')}}'" class="btn btn-info">Ataskaita</button>
+                                <button type="submit" onclick="location.href='{{url('reports/create')}}'" class="btn btn-info">Kelionės Ataskaita</button>
                             </div>
                         </div>
                     </div>                   

@@ -22,7 +22,7 @@ class AutoController extends Controller
      */
     public function index()
     {
-        $autos = Auto::all();
+        $autos = Auto::orderBy('name', 'asc')->orderBy('number', 'asc')->get();
         return view('autos.index', compact('autos'));
     }
 

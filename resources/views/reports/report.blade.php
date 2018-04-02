@@ -6,8 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <span class="h2">Kelionės ataskaita </span>
+                    <span class="h2">Kelionės ataskaita </span>                    
                     <button onclick='location.href="{{url('/home')}}"' type="button" class="btn btn-info float-right">Pradinis</button>
+                    <br>
+                    <p class="h5">Vartotojas: {{ $user->name }} </p>
+                    <p class="h5">Laikotarpis: {{ $year }} </p>
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -39,14 +42,14 @@
                               @foreach ($trips as $trip)
                                 <tr>
                                   <th scope="row">{{ $counter++ }}</th>
-                                  <td>{{ $trip->date }}</td>
-                                  <td>{{ $trip->route }}</td>
-                                  <td>{{ $trip->timeStart }}</td>
+                                  <td nowrap>{{ $trip->date }}</td>
+                                  <td nowrap>{{ $trip->route }}</td>
+                                  <td>{{ DateTime::createFromFormat('H:i:s', $trip->timeStart)->format('H:i') }}</td>
                                   <td>{{ $trip->spidometerStart }}</td>
-                                  <td>{{ $trip->timeToCustomer }}</td>
+                                  <td>{{ DateTime::createFromFormat('H:i:s', $trip->timeToCustomer)->format('H:i') }}</td>
                                   <td>{{ $trip->timeunload }}</td>
-                                  <td>{{ $trip->timeFromCustomer }}</td>
-                                  <td>{{ $trip->timeEnd }}</td>
+                                  <td>{{ DateTime::createFromFormat('H:i:s', $trip->timeFromCustomer)->format('H:i') }}</td>
+                                  <td>{{ DateTime::createFromFormat('H:i:s', $trip->timeEnd)->format('H:i') }}</td>
                                   <td>{{ $trip->spidometerEnd }}</td>
                                   <td>{{ $trip->distance }}</td>
                                   <td>{{ $trip->fuel }}</td>

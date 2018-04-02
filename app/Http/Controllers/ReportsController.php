@@ -98,10 +98,11 @@ class ReportsController extends Controller
         $users = User::where('name', request('user'))->get();
         foreach ($users as $user){
              $id = $user->id; 
-        }
+        } 
+
 
         $trips = Trip::where('user_id', $id)->whereYear('date', $year)->whereMonth('date', $month)->get();
 
-        return view('reports.report', compact(['trips']));
+        return view('reports.report', compact(['trips', 'user', 'year' ]));
     }
 }
