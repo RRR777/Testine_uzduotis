@@ -39,7 +39,7 @@
                                     <select class="form-control" name="user" id="validationServer02">
                                         <option selected>Pasirinkite vartotoją</option>
                                         @foreach ($users as $user)
-                                            <option>{{$user->name}}</option>
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

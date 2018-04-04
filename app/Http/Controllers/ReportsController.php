@@ -99,11 +99,8 @@ class ReportsController extends Controller
         $year = Carbon::parse(request('month'))->format('Y-m');
         $month = Carbon::parse(request('month'))->format('m');
 
-        $users = User::where('name', request('user'))->get();
-        foreach ($users as $user){
-             $id = $user->id; 
-        } 
-
+        $id = request('user');
+        $user = User::where('id', $id)->first();
 
         $trips = Trip::where('user_id', $id)->whereYear('date', $year)->whereMonth('date', $month)->get();
 
