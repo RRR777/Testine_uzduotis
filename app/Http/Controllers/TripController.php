@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateTripRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Trip;
@@ -42,20 +43,8 @@ class TripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Auto $auto)
+    public function store(CreateTripRequest $request, Auto $auto)
     {
-        $this->validate(request(),[
-            'date' => 'required|date',
-            'route' => 'required|string',
-            'timeStart' => 'required',
-            'timeToCustomer' => 'required',
-            'timeFromCustomer' => 'required',
-            'timeEnd' => 'required',
-            'spidometerStart' => 'required|numeric',
-            'spidometerEnd' => 'required|numeric',
-            'timeunload' => 'required|numeric'
-        ]);
-        
         $trip = new Trip;
         $trip->user_id = Auth::user()->id;
         $trip->auto_id = $auto->id;
