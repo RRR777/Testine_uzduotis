@@ -24,7 +24,7 @@
                                     <label for="validationServer01">Data:</label>
                                 </div>
                                 <div class="col-md-10 mb-9">
-                                    <input type="month" class="form-control" value="{{ old('month') }}" name="month" id="validationServer01" placeholder="Įveskite datą" value="" required>
+                                    <input type="month" class="form-control" value="{{ old('month') }}" name="month" id="validationServer01" placeholder="Įveskite datą" required>
                                     <div class="invalid-feedback">
                                         Pasirinkite datą!
                                     </div>
@@ -44,21 +44,6 @@
                                     </select>
                                 </div>
                             </div>
-
-{{--                              <div class="form-row">
-                                <div class="col-md-2 mb-3">
-                                    <label for="validationServer01">Automobilis:</label>
-                                </div>
-                                <div class="col-md-10 mb-9">
-                                    <select class="form-control">
-                                        <option>Pasirinkite automobilį</option>
-                                        @foreach ($autos as $auto)
-                                            <option>{{ $auto->name . " " . $auto->number }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>  --}}
-
                             <button class="btn btn-info" type="submit">Patvirtinti</button>
                         </form>
                     </div>
