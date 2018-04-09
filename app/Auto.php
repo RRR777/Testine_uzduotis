@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Auto extends Model
 {
-    protected $fillable = ['name','number', 'stop', 'drive', 'unload'];
+    protected $fillable = ['name','number', 'stop', 'drive', 'unload', 'creator_id'];
     
 
     public function user()
@@ -16,12 +16,12 @@ class Auto extends Model
 
     public function creator()
     {
-        return $this->belongsTo(User::creator_id);
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     public function updator()
     {
-        return $this->belongsTo(User::updator_id);
+        return $this->belongsTo(User::class, 'updator_id');
     }
 
     public function trips()
