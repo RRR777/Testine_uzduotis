@@ -24,7 +24,7 @@
                                     <label for="validationServer01">Data:</label>
                                 </div>
                                 <div class="col-md-10 mb-9">
-                                    <input type="month" class="form-control" name="month" id="validationServer01" placeholder="Įveskite datą" value="" required>
+                                    <input type="month" class="form-control" value="{{ old('month') }}" name="month" id="validationServer01" placeholder="Įveskite datą" value="" required>
                                     <div class="invalid-feedback">
                                         Pasirinkite datą!
                                     </div>
@@ -36,7 +36,7 @@
                                     <label for="validationServer02">Vartotojas:</label>
                                 </div>
                                 <div class="col-md-10 mb-9">
-                                    <select class="form-control" name="user" id="validationServer02">
+                                    <select class="form-control" value="{{ old('user') }}" name="user" id="validationServer02">
                                         <option selected>Pasirinkite vartotoją</option>
                                         @foreach ($users as $user)
                                     <option value="{{$user->id}}">{{$user->name}}</option>
