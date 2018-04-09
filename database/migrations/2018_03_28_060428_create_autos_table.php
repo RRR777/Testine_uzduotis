@@ -20,10 +20,21 @@ class CreateAutosTable extends Migration
             $table->integer('stop');
             $table->integer('drive');
             $table->integer('unload');
-            $table->integer('creator_id');
-            $table->integer('updator_id')->nullable();
+            $table->integer('creator_id')->unsigned()->nullable();
+            $table->integer('updator_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->softDeletes();
+        });
+
+        Schema::table('autos', function (Blueprint $table) {
+            $table->foreign('creator_id')
+                  ->references('id')->on('users')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
+
+            $table->foreign('updator_id')
+                  ->references('id')->on('users')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
         });
     }
 

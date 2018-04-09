@@ -15,8 +15,8 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('auto_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('auto_id')->unsigned();
             $table->date('date');
             $table->string('route');
             $table->time('timeStart');
@@ -29,6 +29,17 @@ class CreateTripsTable extends Migration
             $table->integer('distance');
             $table->double('fuel');
             $table->timestamps();
+        });
+
+        Schema::table('trips', function (Blueprint $table) {
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
+            $table->foreign('auto_id')
+                  ->references('id')->on('autos')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
         });
     }
 
