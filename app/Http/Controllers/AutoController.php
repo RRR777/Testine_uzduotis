@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateAutoRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Auto;
 use App\User;
@@ -42,28 +43,17 @@ class AutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAutoRequest $request)
     {
-        //validation
-        $this->validate(request(),[
-            'name' => 'required',
-            'number' => 'required|unique:autos,number',
-            'stop' => 'required',
-            'drive' => 'required',
-            'unload' => 'required'
-        ]);
+        $auto = new Auto;
+        $auto->name = $request->input('name');
+        $auto->number = $request->input('number');
+        $auto->stop = $request->input('stop');
+        $auto->drive = $request->input('drive');
+        $auto->unload = $request->input('unload');
+        $auto->creator_id = Auth::user()->id;
+        $auto->save();
 
-        //create a new Auto using the request data
-        Auto::create([
-            'name' => request('name'),
-            'number' => request('number'),
-            'stop' => request('stop'),
-            'drive' => request('drive'),
-            'unload' => request('unload'),
-            'creator_id' => Auth::user()->id
-        ]);
-
-        //and then redirect to the home page
         return redirect('/home');
     }
 
