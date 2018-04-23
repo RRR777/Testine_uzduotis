@@ -20,17 +20,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/autos', 'AutoController@index');
-Route::get('/autos/create', 'AutoController@create');
-Route::post('/autos', 'AutoController@store');
+Route::get('/autos/create', 'AutoController@create')->middleware('role:admin');
+Route::post('/autos/{auto}', 'AutoController@store')->middleware('role:admin');
 Route::get('/autos/{auto}', 'AutoController@show');
 
-
-Route::get('/trips', 'TripController@index');
+Route::get('/trips', 'TripController@index')->middleware('role:admin');
 Route::get('/trips/{auto}/create', 'TripController@create');
 Route::post('/trips/{auto}', 'TripController@store');
 
-Route::get('/users', 'UserController@index');
+Route::get('users', 'UserController@index')->middleware('role:admin');
 
-Route::get('/reports', 'ReportsController@index');
-Route::get('/reports/create', 'ReportsController@create');
-Route::post('/reports', 'ReportsController@report');
+Route::get('/reports', 'ReportsController@index')->middleware('role:admin');
+Route::get('/reports/create', 'ReportsController@create')->middleware('role:admin');
+Route::post('/reports', 'ReportsController@report')->middleware('role:admin');

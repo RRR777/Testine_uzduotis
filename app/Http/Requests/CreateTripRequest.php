@@ -35,7 +35,7 @@ class CreateTripRequest extends FormRequest
             'timeFromCustomer' => 'required|after:timeToCustomer',
             'timeEnd' => 'required|after:timeFromCustomer',
             'spidometerStart' => 'required|numeric|min:1',
-            'spidometerEnd' => 'required|numeric|min:spidometerStart',
+            'spidometerEnd' => 'required|numeric|max :spidometerStart',
             'timeunload' => 'required|numeric'
         ];
 

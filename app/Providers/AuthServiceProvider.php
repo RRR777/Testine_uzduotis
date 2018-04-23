@@ -24,7 +24,20 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+/*         $this->registerTripPolicies();
 
         //
     }
+
+    public function registerTripPolicies()
+    {
+        Gate::define('create-trip', function($user){
+            $user->hasAccess(['create-trip']);
+        });
+
+        Gate::define('see-all-autos', function($user){
+            return $user->inRole('editor');
+        });
+    } */
+}
 }

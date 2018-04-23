@@ -16,6 +16,7 @@
                     @endif                      
                     <h1 class="text-center">Transporto priemonių valdymas</h1>
                     <br>
+                    @if(Auth::check() && Auth::user()->hasrole('admin'))
                     <div class="container">
                         <div class="row d-flex justify-content-center text-center">
                             <div class="col-md-2">
@@ -34,7 +35,15 @@
                                 <button type="submit" onclick="location.href='{{url('reports/create')}}'" class="btn btn-info">Kelionės Ataskaita</button>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
+                    @endif
+                    @if(Auth::check() && Auth::user()->hasrole('manager'))
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-md-8" >
+                            <button type="submit" onclick="location.href='{{url('autos')}}'" class="btn btn-info">Įvesti kelionę</button>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

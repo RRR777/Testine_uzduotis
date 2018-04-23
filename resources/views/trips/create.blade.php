@@ -69,7 +69,7 @@
                       <label for="validationCustom05">Iškrovimo laikas, min:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="number" class="form-control" value="{{ old('timunload') }}" name="timeunload" id="validationCustom05" placeholder="Įveskite iškrovimo laiką minutėmis" required>
+                      <input type="number" class="form-control" value="{{ old('timeunload') }}" name="timeunload" id="validationCustom05" placeholder="Įveskite iškrovimo laiką minutėmis" required>
                       <div class="invalid-feedback">
                         Įveskite iškrovimo laiką minutėmis!
                       </div>
@@ -99,7 +99,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-2 mb-3">
-                      <label for="validationCustom08">Spidometro parodymai:</label>
+                      <label for="validationCustom08">Pradiniai Spidometro parodymai:</label>
                     </div>
                     <div class="col-md-10 mb-9">
                       <input type="number" class="form-control" value="{{ old('spidometerStart') }}" name="spidometerStart" id="validationCustom08" placeholder="Įveskite Spidometro parodymus išvykstant" required>
@@ -110,7 +110,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col-md-2 mb-3">
-                      <label for="validationCustom09">Spidometro parodymai:</label>
+                      <label for="validationCustom09">Galutiniai Spidometro parodymai:</label>
                     </div>
                     <div class="col-md-10 mb-9">
                       <input type="number" class="form-control" value="{{ old('spidometerEnd') }}" name="spidometerEnd" id="validationCustom09" placeholder="Įveskite Spidometro parodymus grįžus" required>

@@ -48,18 +48,18 @@ class TripController extends Controller
         $trip = new Trip;
         $trip->user_id = Auth::user()->id;
         $trip->auto_id = $auto->id;
-        $trip->date = request('date');
-        $trip->route = request('route');
-        $trip->timeStart = request('timeStart');
-        $trip->timeToCustomer = request('timeToCustomer');
-        $trip->timeFromCustomer = request('timeFromCustomer');
-        $trip->timeEnd = request('timeEnd');
-        $trip->spidometerStart = request('spidometerStart');
-        $trip->spidometerEnd = request('spidometerEnd');
-        $trip->timeunload = request('timeunload');
-        $trip->distance = request('spidometerEnd') - request('spidometerStart');
-        //fuel calculation     
-        function time_Diff_Minutes($startTime, $endTime) 
+        $trip->date = $request->input('date');
+        $trip->route = $request->input('route');
+        $trip->timeStart = $request->input('timeStart');
+        $trip->timeToCustomer = $request->input('timeToCustomer');
+        $trip->timeFromCustomer = $request->input('timeFromCustomer');
+        $trip->timeEnd = $request->input('timeEnd');
+        $trip->spidometerStart = $request->input('spidometerStart');
+        $trip->spidometerEnd = $request->input('spidometerEnd');
+        $trip->timeunload = $request->input('timeunload');
+        $trip->distance = $request->input('spidometerEnd') - $request->input('spidometerStart');
+        //fuel calculation
+        function time_Diff_Minutes($startTime, $endTime)
         {
         $to_time = strtotime($endTime);
         $from_time = strtotime($startTime);

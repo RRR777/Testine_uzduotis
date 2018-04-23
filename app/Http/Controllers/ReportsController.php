@@ -23,7 +23,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -31,7 +31,7 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create(User $user )
     {
         $users = User::orderBy('name', 'asc')->get();
         $autos = Auto::orderBy('name', 'asc')->orderBy('number', 'asc')->get();
@@ -46,7 +46,7 @@ class ReportsController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
