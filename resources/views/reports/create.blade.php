@@ -7,7 +7,11 @@
             <div class="card">
                 <div class="card-header">
                   <span class="h2">Vartotojo ataskaitos</span>
-                  <button onclick='location.href="{{url('/home')}}"' type="button" class="btn btn-info float-right">Pradinis</button>
+                  <button onclick='location.href="{{url('/home')}}"'
+                          type="button"
+                          class="btn btn-info float-right">
+                          Pradinis
+                  </button>
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -17,16 +21,25 @@
                     @endif
                     <div class="container">
                       @include('layouts.errors')
-                        <form class="needs-validation" novalidate action="{{ url('/reports') }}" method="post">                 
-                                {{ csrf_field() }}     
+                        <form class="needs-validation"
+                              novalidate
+                              action="{{ url('/reports') }}"
+                              method="post">
+                                {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="col-md-2 mb-3">
                                     <label for="validationServer01">Data:</label>
                                 </div>
                                 <div class="col-md-10 mb-9">
-                                    <input type="month" class="form-control" value="{{ old('month') }}" name="month" id="validationServer01" placeholder="Įveskite datą" required>
+                                    <input type="month"
+                                           class="form-control"
+                                           value="{{ old('month') }}"
+                                           name="month"
+                                           id="validationServer01"
+                                           placeholder="Įveskite datą"
+                                           required>
                                     <div class="invalid-feedback">
-                                        Pasirinkite datą!
+                                        * Pasirinkite datą!
                                     </div>
                                 </div>
                             </div>
@@ -36,15 +49,27 @@
                                     <label for="validationServer02">Vartotojas:</label>
                                 </div>
                                 <div class="col-md-10 mb-9">
-                                    <select class="form-control" value="{{ old('user') }}" name="user" id="validationServer02">
-                                        <option selected>Pasirinkite vartotoją</option>
+                                    <select class="form-control"
+                                            value="{{ old('driver') }}"
+                                            name="driver"
+                                            id="validationServer02"
+                                            required>
+                                        <option value="">Pasirinkite vartotoją</option>
                                         @foreach ($users as $user)
-                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                            <option value="{{$user->id}}">
+                                                {{$user->name}}
+                                            </option>
                                         @endforeach
                                     </select>
+                                    <div class="invalid-feedback">
+                                        * Pasirinkite vartotoją!
+                                    </div>
                                 </div>
                             </div>
-                            <button class="btn btn-info" type="submit">Patvirtinti</button>
+                            <button class="btn btn-info"
+                                    type="submit">
+                                    Patvirtinti
+                            </button>
                         </form>
                     </div>
                 </div>

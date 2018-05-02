@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Auto;
 use App\User;
 
-
 class AutoController extends Controller
 {
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateReportsRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DateTime;
@@ -12,7 +13,7 @@ use App\Trip;
 
 class ReportsController extends Controller
 {
-        public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -94,16 +95,19 @@ class ReportsController extends Controller
         //
     }
 
-    public function report(Request $request)
+    public function report(CreateReportsRequest $request)
     {
         $year = Carbon::parse(request('month'))->format('Y-m');
         $month = Carbon::parse(request('month'))->format('m');
 
-        $id = request('user');
+        $id = request('driver');
         $user = User::where('id', $id)->first();
 
-        $trips = Trip::where('user_id', $id)->whereYear('date', $year)->whereMonth('date', $month)->get();
+        $trips = Trip::where('user_id', $id)
+                        ->whereYear('date', $year)
+                        ->whereMonth('date', $month)
+                        ->get();
 
-        return view('reports.report', compact(['trips', 'user', 'year' ]));
+        return view('reports.report', compact(['trips', 'user', 'year']));
     }
 }

@@ -7,7 +7,11 @@
       <div class="card">
         <div class="card-header">
           <span class="h2">Įveskite kelionės duomenis</span>
-          <button onclick='location.href="{{url('/home')}}"' type="button" class="btn btn-info float-right">Pradinis</button>
+          <button onclick='location.href="{{url('/home')}}"'
+                  type="button"
+                  class="btn btn-info float-right">
+                  Pradinis
+          </button>
         </div>
         <div class="card-body">
           @if (session('status'))
@@ -16,16 +20,25 @@
             </div>
           @endif
           <div class="container">
-            @include('layouts.errors')      
+            @include('layouts.errors')
               <h4>Automobilis: {{ $auto->name }} Valst.nr.: {{ $auto->number }}</h4><br>
-              <form class="needs-validation" novalidate action="{{ url('/trips', $auto->id) }}" method="post">                 
-                      {{ csrf_field() }}     
+              <form class="needs-validation"
+                    novalidate
+                    action="{{ url('/trips', $auto->id) }}"
+                    method="post">
+                      {{ csrf_field() }}
                   <div class="form-row">
                     <div class="col-md-2 mb-3">
                       <label for="validationServer01">Kelionės data:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="date" class="form-control" value="{{ old('date') }}" name="date" id="validationServer01" placeholder="Įveskite datą" value="" required>
+                      <input type="date"
+                             class="form-control"
+                             value="{{ old('date') }}"
+                             name="date"
+                             id="validationServer01"
+                             placeholder="Įveskite datą"
+                             required>
                         <div class="invalid-feedback">
                           Pasirinkite datą!
                         </div>
@@ -36,7 +49,13 @@
                       <label for="validationServer02">Maršrutas:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="text" class="form-control" value="{{ old('route') }}" name="route" id="validationServer02" placeholder="Įveskite kelionės maršrutą" value="" required>
+                      <input type="text"
+                             class="form-control"
+                             value="{{ old('route') }}"
+                             name="route"
+                             id="validationServer02"
+                             placeholder="Įveskite kelionės maršrutą"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite kelionės maršrutą!
                       </div>
@@ -47,7 +66,13 @@
                       <label for="validationCustom03">Išvyko iš terminalo:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="time" class="form-control" value="{{ old('timeStart') }}" name="timeStart" id="validationCustom03" placeholder="Įveskite išvykimo iš terminalo laiką" required>
+                      <input type="time"
+                             class="form-control"
+                             value="{{ old('timeStart') }}"
+                             name="timeStart"
+                             id="validationCustom03"
+                             placeholder="Įveskite išvykimo iš terminalo laiką"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite išvykimo iš terminalo laiką!
                       </div>
@@ -58,7 +83,13 @@
                       <label for="validationCustom04">Atvyko pas klientą:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="time" class="form-control" value="{{ old('timeToCustomer') }}" name="timeToCustomer" id="validationCustom04" placeholder="Įveskite laiką" required>
+                      <input type="time"
+                             class="form-control"
+                             value="{{ old('timeToCustomer') }}"
+                             name="timeToCustomer"
+                             id="validationCustom04"
+                             placeholder="Įveskite laiką"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite atvykimo pas klientą laiką!
                       </div>
@@ -69,7 +100,13 @@
                       <label for="validationCustom05">Iškrovimo laikas, min:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="number" class="form-control" value="{{ old('timeunload') }}" name="timeunload" id="validationCustom05" placeholder="Įveskite iškrovimo laiką minutėmis" required>
+                      <input type="number"
+                             class="form-control"
+                             value="{{ old('timeunload') }}"
+                             name="timeunload"
+                             id="validationCustom05"
+                             placeholder="Įveskite iškrovimo laiką minutėmis"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite iškrovimo laiką minutėmis!
                       </div>
@@ -80,7 +117,13 @@
                       <label for="validationCustom06">Išvyko iš Kliento:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="time" class="form-control" value="{{ old('timeFromCustomer') }}" name="timeFromCustomer" id="validationCustom06" placeholder="Įveskite laiką" required>
+                      <input type="time"
+                             class="form-control"
+                             value="{{ old('timeFromCustomer') }}"
+                             name="timeFromCustomer"
+                             id="validationCustom06"
+                             placeholder="Įveskite laiką"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite išvykimo iš kliento laiką!
                       </div>
@@ -91,7 +134,13 @@
                       <label for="validationCustom07">Atvyko į terminalą:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="time" class="form-control" value="{{ old('timeEnd') }}" name="timeEnd" id="validationCustom07" placeholder="Įveskite laiką" required>
+                      <input type="time"
+                             class="form-control"
+                             value="{{ old('timeEnd') }}"
+                             name="timeEnd"
+                             id="validationCustom07"
+                             placeholder="Įveskite laiką"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite atvykimo į terminalą laiką!
                       </div>
@@ -102,7 +151,13 @@
                       <label for="validationCustom08">Pradiniai Spidometro parodymai:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="number" class="form-control" value="{{ old('spidometerStart') }}" name="spidometerStart" id="validationCustom08" placeholder="Įveskite Spidometro parodymus išvykstant" required>
+                      <input type="number"
+                             class="form-control"
+                             value="{{ old('spidometerStart') }}"
+                             name="spidometerStart"
+                             id="validationCustom08"
+                             placeholder="Įveskite Spidometro parodymus išvykstant"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite Spidometro parodymus išvykstant!
                       </div>
@@ -113,7 +168,13 @@
                       <label for="validationCustom09">Galutiniai Spidometro parodymai:</label>
                     </div>
                     <div class="col-md-10 mb-9">
-                      <input type="number" class="form-control" value="{{ old('spidometerEnd') }}" name="spidometerEnd" id="validationCustom09" placeholder="Įveskite Spidometro parodymus grįžus" required>
+                      <input type="number"
+                             class="form-control"
+                             value="{{ old('spidometerEnd') }}"
+                             name="spidometerEnd"
+                             id="validationCustom09"
+                             placeholder="Įveskite Spidometro parodymus grįžus"
+                             required>
                       <div class="invalid-feedback">
                         Įveskite Spidometro parodymus grįžus!
                       </div>

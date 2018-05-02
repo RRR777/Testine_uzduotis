@@ -23,6 +23,5 @@ class RolesSeeder extends Seeder
         $role_user->slug = 'manager';
         $role_user->permissions = "manager";
         $role_user->save();
-
     }
 }

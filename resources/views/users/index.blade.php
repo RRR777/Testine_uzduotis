@@ -7,7 +7,11 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h2">Vartotojų sąrašas</span>
-                    <button onclick='location.href="{{url('/home')}}"' type="button" class="btn btn-info float-right">Pradinis</button>
+                    <button onclick='location.href="{{url('/home')}}"'
+                            type="button"
+                            class="btn btn-info float-right">
+                            Pradinis
+                    </button>
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -26,7 +30,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                              <?php $counter = 1 ?> 
+                              <?php $counter = 1 ?>
                               @foreach ($users as $user)
                                 <tr>
                                   <th scope="row">{{ $counter++ }}</th>

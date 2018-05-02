@@ -14,10 +14,11 @@ class CreateTripRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -35,8 +36,8 @@ class CreateTripRequest extends FormRequest
             'timeFromCustomer' => 'required|after:timeToCustomer',
             'timeEnd' => 'required|after:timeFromCustomer',
             'spidometerStart' => 'required|numeric|min:1',
-            'spidometerEnd' => 'required|numeric|max :spidometerStart',
-            'timeunload' => 'required|numeric'
+            'spidometerEnd' => 'required|numeric|min:spidometerStart',
+            'timeunload' => 'required|numeric',
         ];
 
     }
@@ -49,19 +50,26 @@ class CreateTripRequest extends FormRequest
             'route.string' => 'Įveskite kelionės maršrutą.',
             'timeStart.required' => 'Įveskite Išvykimo iš terminalo laiką.',
             'timeToCustomer.required' => 'Įveskite Atvykimo pas klientą laiką.',
-            'timeToCustomer.after' => 'Atvykimo pas klientą laikas turi būti vėlesis nei Išvykimo iš terminalo laikas.',
+            'timeToCustomer.after' => 'Atvykimo pas klientą laikas turi būti 
+                                    vėlesis nei Išvykimo iš terminalo laikas.',
             'timeFromCustomer.required' => 'Įveskite Išvykimo iš kliento laiką.',
-            'timeFromCustomer.after' => 'Išvykimo iš kliento laikas turi būti vėlesis nei Atvykimo pas klientą laikas.',
+            'timeFromCustomer.after' => 'Išvykimo iš kliento laikas turi būti 
+                                    vėlesis nei Atvykimo pas klientą laikas.',
             'timeEnd.required' => 'Įveskite Atvykimo į terminalą laiką.',
-            'timeEnd.after' => 'Atvykimo į terminalą laikas turi būti vėlesis nei Išvykimo iš kliento laikas.',
+            'timeEnd.after' => 'Atvykimo į terminalą laikas turi būti vėlesis 
+                                    nei Išvykimo iš kliento laikas.',
             'spidometerStart.required' => 'Įveskite pradinius spidometro parodymus.',
-            'spidometerStart.numeric' => 'Pradiniai spidometro parodymai turi būti skaičiai.',
-            'spidometerStart.min' => 'Pradiniai spidometro parodymai turi būti teigiami skaičiai.',
+            'spidometerStart.numeric' => 'Pradiniai spidometro parodymai turi būti
+                                          skaičiai.',
+            'spidometerStart.min' => 'Pradiniai spidometro parodymai turi būti 
+                                      teigiami skaičiai.',
             'spidometerEnd.required' => 'Įveskite galutinius spidometro parodymus.',
-            'spidometerEnd.numeric' => 'Galutiniai spidometro parodymai turi būti skaičiai.',
-            'spidometerEnd.min' => 'Galutiniai spidometro parodymai turi būti didesni nei pradiniai spidometro parodymai.',
+            'spidometerEnd.numeric' => 'Galutiniai spidometro parodymai turi būti 
+                                        skaičiai.',
+            'spidometerEnd.min' => 'Galutiniai spidometro parodymai turi būti 
+                                    didesni nei pradiniai spidometro parodymai.',
             'timeunload.required' => 'Įveskite Iškrovimo laiką minutėmis.',
-            'timeunload.numeric' => 'Iškrovimo laikas turi būti įvestas skaičiais.'
+            'timeunload.numeric' => 'Iškrovimo laikas turi būti įvestas skaičiais.',
         ];
     }
     

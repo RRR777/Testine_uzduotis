@@ -14,10 +14,11 @@ class CreateAutoRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     /**
@@ -40,7 +41,8 @@ class CreateAutoRequest extends FormRequest
     {
         return [
             'name.required' => 'Įveskite tranporto priemonės pavadinimą.',
-            'name.min' => 'Transporto priemonės pavadinimas turi būti bent 3 simboliai.',
+            'name.min' => 'Transporto priemonės pavadinimas turi būti bent 3 
+                           simboliai.',
             'number.required' => 'Įveskite valstybinį numerį.',
             'number.unique' => 'Toks valstybinis numeris jau įvestas.',
             'stop.required' => 'Įveskite Stovėjimo kuro normą.',

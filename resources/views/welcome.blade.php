@@ -8,7 +8,8 @@
         <title>Transportas</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600"
+               rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -76,13 +77,11 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Transporto Priemonių <br>
                     Valdymas
                 </div>
-
             </div>
         </div>
     </body>

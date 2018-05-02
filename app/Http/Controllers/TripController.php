@@ -57,19 +57,26 @@ class TripController extends Controller
         $trip->spidometerStart = $request->input('spidometerStart');
         $trip->spidometerEnd = $request->input('spidometerEnd');
         $trip->timeunload = $request->input('timeunload');
-        $trip->distance = $request->input('spidometerEnd') - $request->input('spidometerStart');
+        $trip->distance = $request->input('spidometerEnd')
+                        - $request->input('spidometerStart');
         //fuel calculation
         function time_Diff_Minutes($startTime, $endTime)
         {
-        $to_time = strtotime($endTime);
-        $from_time = strtotime($startTime);
-        $minutes = ($to_time - $from_time) / 60;
+            $to_time = strtotime($endTime);
+            $from_time = strtotime($startTime);
+            $minutes = ($to_time - $from_time) / 60;
 
-        return ($minutes < 0 ? 0 : abs($minutes));
+            return ($minutes < 0 ? 0 : abs($minutes));
         }        
-        $stop = time_Diff_Minutes($trip->timeToCustomer, $trip->timeFromCustomer) - $trip->timeunload;
-        $drive = time_Diff_Minutes($trip->timeStart, $trip->timeToCustomer) + time_Diff_Minutes($trip->timeFromCustomer, $trip->timeEnd);                                    
-        $fuel = round(($stop / 60 * $trip->auto->stop) + ($drive / 60 * $trip->auto->drive) + ($trip->timeunload / 60 * $trip->auto->unload), 2);
+            $stop = time_Diff_Minutes($trip->timeToCustomer, $trip->timeFromCustomer)
+                  - $trip->timeunload;
+            $drive = time_Diff_Minutes($trip->timeStart, $trip->timeToCustomer)
+                   + time_Diff_Minutes($trip->timeFromCustomer, $trip->timeEnd);
+            $fuel = round(
+                ($stop / 60 * $trip->auto->stop) 
+                + ($drive / 60 * $trip->auto->drive) 
+                + ($trip->timeunload / 60 * $trip->auto->unload), 2
+            );
 
         $trip->fuel = $fuel;
         $trip->save();
@@ -127,5 +134,4 @@ class TripController extends Controller
     {
         //
     }
-
 }

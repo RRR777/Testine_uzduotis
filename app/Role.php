@@ -7,9 +7,7 @@ use App\User;
 
 class Role extends Model
 {
-    protected $fillable = [
-        'name', 'slug', 'permissions',
-    ];
+    protected $fillable = ['name', 'slug', 'permissions'];
 
     public function users()
     {
@@ -18,8 +16,8 @@ class Role extends Model
 
     public function hasAccess(array $permissions)
     {
-        foreach ($permissions as $permission){
-            if($this->hasPermission($permission)){
+        foreach ($permissions as $permission) {
+            if ($this->hasPermission($permission)) {
                 return true;
             }
         }
@@ -30,5 +28,4 @@ class Role extends Model
         $permissions = json_decode($this->permissions, true);
         return $permissions[$permission] ?? false;
     }
-
 }
